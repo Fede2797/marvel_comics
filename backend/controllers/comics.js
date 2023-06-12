@@ -7,8 +7,9 @@ let url = new URL('https://gateway.marvel.com:443/v1/public/comics')
 
 const getComics = async ( req, res ) => {
     // TODO: Agregar page al body de la request y usarlo para construir la URL
-    // const page = req.body.page || 0;
-    
+    const page = req.body?.page || 0;
+    const offset = page * Number(LIMIT);
+
     // Preparation needed to authenticate with marvel's API
     const date = new Date();
     const timestamp = date.getTime().toString();
@@ -17,6 +18,7 @@ const getComics = async ( req, res ) => {
 
     // Declaration of the parameters of the URL
     const parameters = [
+        {offset},
         {orderBy: ORDER},
         {limit: LIMIT},
         {ts: timestamp},
@@ -40,7 +42,9 @@ const getComics = async ( req, res ) => {
 
         results.map( comic => {
             const { id, title, series, images, creators, dates} = comic;
-            const image = images[0].path + '.' + images[0].extension;
+
+            let image = '';
+            (images.length !== 0) && (image = images[0]?.path + '.' + images[0]?.extension);
 
             const creators_items =  creators.items;
             const final_creators = [];
@@ -72,7 +76,6 @@ module.exports ={
 const getComicById = async ( req, res ) => {
 
     const id = req.params.id;
-    console.log(id);
     
     // Preparation needed to authenticate with marvel's API
     const date = new Date();
