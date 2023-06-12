@@ -1,5 +1,6 @@
 const CryptoJS = require("crypto-js");
 const { formatData } = require("../helpers/formatData");
+const Comic = require("../models/comic");
 
 const ORDER = 'title'
 const LIMIT = '20'
@@ -107,6 +108,10 @@ const getComicById = async ( req, res ) => {
 
         const comic = formatData(results[0]);
         comics.push(comic);
+
+        const { id, title } = comic;
+        const c = new Comic({ comic_id: id, title });
+        c.save();
 
     } catch (error) {
         console.log(error);

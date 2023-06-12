@@ -1,5 +1,4 @@
 const formatData = ( comic ) => {
-    console.log({comic});
     const { id, title, series, images, creators, dates} = comic;
     const image = images[0].path + '.' + images[0].extension;
 
