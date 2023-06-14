@@ -8,8 +8,17 @@ export const ComicContainer = ({ comics }) => {
         {
             comics.map( comic => (
                 <article key={comic.id} className='w-full max-w-[400px] mx-auto flex gap-3'>
-                    <figure className="min-w-[130px] md:min-w-[160px]">
-                        <img className='h-[200px] md:h-[250px]' src={comic.image} alt="" />
+                    <figure className=" min-w-[130px] md:min-w-[160px]">
+                        <img 
+                            className={`${ comic.image === '' ? 'hidden' : 'block' } h-[200px] md:h-[250px]`} 
+                            alt="" 
+                            src={ comic.image } 
+                        />
+                        <img 
+                            className={`${ comic.image === '' ? 'block' : 'hidden' } max-h-[200px] md:max-h-[250px] p-3 bg-[#5a5a5a]`} 
+                            alt="" 
+                            src="no-image.png"
+                        />
                     </figure>
                     <div className='mt-3 w-full flex flex-col [&>label]:font-bold'>
                         <label>Title</label>

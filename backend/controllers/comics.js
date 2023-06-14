@@ -8,8 +8,8 @@ let url = new URL('https://gateway.marvel.com:443/v1/public/comics')
 
 const getComics = async ( req = request, res ) => {
     // TODO: Agregar page al body de la request y usarlo para construir la URL
-    const page = req.body?.page || 0;
-    const offset = page * Number(LIMIT);
+    const page = req.headers?.page || 0;
+    const offset = Number(page) * Number(LIMIT);
 
     // Preparation needed to authenticate with marvel's API
     const date = new Date();

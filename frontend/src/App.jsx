@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { CircularProgress } from "./CircularProgress"
 import { Header } from "./Header"
 import { MainContent } from "./MainContent"
 import { Navigation } from "./Navigation"
