@@ -6,7 +6,7 @@ const ORDER = 'title'
 const LIMIT = '20'
 let url = new URL('https://gateway.marvel.com:443/v1/public/comics')
 
-const getComics = async ( req, res ) => {
+const getComics = async ( req = request, res ) => {
     // TODO: Agregar page al body de la request y usarlo para construir la URL
     const page = req.body?.page || 0;
     const offset = page * Number(LIMIT);
@@ -37,6 +37,7 @@ const getComics = async ( req, res ) => {
 
     // Execute the fetch to the Marvel API, format the data and fill the comics array
     try {
+        console.log("Nueva request recibida");
         const res = await fetch(url);
         const response = await res.json();
         const { results } = response.data;
