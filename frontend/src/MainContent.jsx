@@ -13,7 +13,8 @@ export const MainContent = ({ isLoadingComics, setIsLoadingComics, comics, setCo
             setLoading();
             const response = await fetch('http://localhost:3000/api', 
               { 
-                body: { "page": page } 
+                method: "GET",
+                headers: { "page": page } 
               }
             );
             const jsonData = await response.json();
