@@ -1,21 +1,12 @@
-import { useState } from "react"
-import { Header } from "./Header"
-import { MainContent } from "./MainContent"
-import { Navigation } from "./Navigation"
+import { Route, Routes } from "react-router-dom"
+import Comics from "./pages/Comics"
+import Comic from "./pages/Comic"
 
-function App() {
-
-  const [isLoadingComics, setIsLoadingComics] = useState(false)
-  const [page, setPage] = useState(0)
-  const [comics, setComics] = useState([])
-
+export const App = () => {
   return (
-    <div className="relative w-full min-h-screen bg-darkGrey text-white">
-      <Header />
-      <MainContent isLoadingComics={isLoadingComics} setIsLoadingComics={setIsLoadingComics} comics={comics} setComics={setComics} page={page} />
-      <Navigation isLoadingComics={isLoadingComics} page={page} setPage={setPage} />
-    </div>
+    <Routes>
+      <Route path='/' element={ <Comics /> } />
+      <Route path="/:id" element={ <Comic /> } />
+    </Routes>
   )
 }
-
-export default App
