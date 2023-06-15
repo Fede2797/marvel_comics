@@ -2,14 +2,16 @@ const CryptoJS = require("crypto-js");
 const { formatData } = require("../helpers/formatData");
 const Comic = require("../models/comic");
 
+const MAIN_URL = 'https://gateway.marvel.com:443/v1/public/comics'
 const ORDER = 'title'
 const LIMIT = '20'
-let url = new URL('https://gateway.marvel.com:443/v1/public/comics')
+
 
 const getComics = async ( req = request, res ) => {
     // TODO: Agregar page al body de la request y usarlo para construir la URL
     const page = req.headers?.page || 0;
     const offset = Number(page) * Number(LIMIT);
+    let url = new URL(MAIN_URL)
 
     // Preparation needed to authenticate with marvel's API
     const date = new Date();
@@ -38,6 +40,7 @@ const getComics = async ( req = request, res ) => {
     // Execute the fetch to the Marvel API, format the data and fill the comics array
     try {
         console.log("Nueva request recibida");
+        console.log({url});
         const res = await fetch(url);
         const response = await res.json();
         const { results } = response.data;
@@ -77,6 +80,7 @@ module.exports ={
 
 const getComicById = async ( req, res ) => {
 
+    let url = new URL(MAIN_URL)
     const id = req.params.id;
     
     // Preparation needed to authenticate with marvel's API
@@ -103,6 +107,7 @@ const getComicById = async ( req, res ) => {
 
     // Execute the fetch to the Marvel API, format the data and fill the comics array
     try {
+        console.log({url});
         const res = await fetch(url);
         const response = await res.json();
         const { results } = response.data;
