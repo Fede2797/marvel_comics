@@ -6,7 +6,6 @@ const MAIN_URL = 'https://gateway.marvel.com:443/v1/public/comics'
 const ORDER = 'title'
 const LIMIT = '20'
 
-
 const getComics = async ( req = request, res ) => {
     // TODO: Agregar page al body de la request y usarlo para construir la URL
     const page = req.headers?.page || 0;
