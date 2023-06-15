@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 
 export const ComicContainer = ({ comics }) => {
 
-    // console.log(comics);
-
   return (
     <div className='w-full grid gap-4 mt-10 p-5 text-[12px] md:grid-cols-2 md:max-w-[900px] md:mx-auto xl:grid-cols-3 xl:max-w-[1250px]'>
         {

@@ -6,7 +6,6 @@ import { CircularProgress } from "./CircularProgress";
 export const MainComic = ({ isLoadingComic, setIsLoadingComic, comic, setComic }) => {
 
     const { id } = useParams();
-    console.log(id);
 
     const setLoading = () => setIsLoadingComic( true );
     const setLoaded  = () => setIsLoadingComic( false );
@@ -14,12 +13,10 @@ export const MainComic = ({ isLoadingComic, setIsLoadingComic, comic, setComic }
     useEffect(() => {
         const fetchData = async () => {
           try {
-            console.log("Request begins");
             setLoading();
             const response = await fetch(`http://localhost:3000/api/${id}`);
             const jsonData = await response.json();
             setComic(jsonData);
-            console.log({jsonData});
             setLoaded();
           } catch (error) {
             console.error('Error:', error);
