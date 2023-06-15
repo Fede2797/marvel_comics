@@ -38,8 +38,6 @@ const getComics = async ( req = request, res ) => {
 
     // Execute the fetch to the Marvel API, format the data and fill the comics array
     try {
-        console.log("Nueva request recibida");
-        console.log({url});
         const res = await fetch(url);
         const response = await res.json();
         const { results } = response.data;
@@ -106,7 +104,6 @@ const getComicById = async ( req, res ) => {
 
     // Execute the fetch to the Marvel API, format the data and fill the comics array
     try {
-        console.log({url});
         const res = await fetch(url);
         const response = await res.json();
         const { results } = response.data;
