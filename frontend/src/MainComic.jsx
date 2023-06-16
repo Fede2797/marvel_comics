@@ -14,7 +14,7 @@ export const MainComic = ({ isLoadingComic, setIsLoadingComic, comic, setComic }
         const fetchData = async () => {
           try {
             setLoading();
-            const response = await fetch(`http://localhost:3000/api/${id}`);
+            const response = await fetch(process.env.REQ_URL + id);
             const jsonData = await response.json();
             setComic(jsonData);
             setLoaded();

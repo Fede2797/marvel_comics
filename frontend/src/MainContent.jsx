@@ -11,7 +11,7 @@ export const MainContent = ({ isLoadingComics, setIsLoadingComics, comics, setCo
         const fetchData = async () => {
           try {
             setLoading();
-            const response = await fetch('http://localhost:3000/api', 
+            const response = await fetch( process.env.REQ_URL, 
               { 
                 method: "GET",
                 headers: { "page": page } 
