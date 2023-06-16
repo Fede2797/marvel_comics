@@ -11,7 +11,7 @@ export const MainContent = ({ isLoadingComics, setIsLoadingComics, comics, setCo
         const fetchData = async () => {
           try {
             setLoading();
-            const response = await fetch( process.env.REQ_URL, 
+            const response = await fetch( "https://marvelcomics-production.up.railway.app/api/", 
               { 
                 method: "GET",
                 headers: { "page": page } 
