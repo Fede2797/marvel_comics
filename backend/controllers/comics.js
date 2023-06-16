@@ -1,5 +1,5 @@
 const CryptoJS = require("crypto-js");
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 const { formatData } = require("../helpers/formatData");
 const Comic = require("../models/comic");
 
